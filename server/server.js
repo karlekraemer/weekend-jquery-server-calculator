@@ -4,25 +4,25 @@ const app = express();
 const port = 5033;
 
 app.use(express.static('server/public'));
+app.use(express.urlencoded());
+
+const solutions = require('./modules/solutions');
 
 app.listen(port, () => {
     console.log('listening on port, ', port);
     // server console.logs ONLY shot up in the terminal
 } );
 
-const solutions = require('./modules/solutions');
 
+app.get('/solutions', function(req, res) {
+     console.log('request for /solutions was made');
+     res.send(solutions);
+ } );
+ 
 
-// app.get('', function(req, res) {
-//         // '/quotes' is our route
-//     console.log("request for /quotes was made");
-//     res.send(solutions);
-//     // res.sendStatus(418);
-// } );
-
-app.post('/', function(req, res) {
+app.post('/solutions', function(req, res) {
     console.log('in the post request!', req.body);
-   if (req.body.text && req.body.author) {
+   if (req.body.firstNumber && req.body.secondNumber) {
         solutions.push(req.body);
         // console.log('NEW QUOTES', quoteList);
         res.sendStatus(201);

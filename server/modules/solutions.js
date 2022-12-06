@@ -1,5 +1,3 @@
-let solutions = {
-
-}
+let solutions = [];
 
 module.exports = solutions;
