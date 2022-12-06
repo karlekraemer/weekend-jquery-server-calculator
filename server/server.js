@@ -13,14 +13,14 @@ app.listen(port, () => {
 const solutions = require('./modules/solutions');
 
 
-app.get('', function(req, res) {
-        // '/quotes' is our route
-    console.log("request for /quotes was made");
-    res.send(solutions);
-    // res.sendStatus(418);
-} );
+// app.get('', function(req, res) {
+//         // '/quotes' is our route
+//     console.log("request for /quotes was made");
+//     res.send(solutions);
+//     // res.sendStatus(418);
+// } );
 
-app.post('', function(req, res) {
+app.post('/', function(req, res) {
     console.log('in the post request!', req.body);
    if (req.body.text && req.body.author) {
         solutions.push(req.body);

@@ -12,13 +12,19 @@ function onReady() {
     $('#clearBtn').on('click', clearSolutions);
 }
 
-
-function postSolution() {
-    console.log('in postSolution function!');
-}
-
 function addNums() {
     console.log('in addNums function!');
+    // add the two inputs together and send to solutions.js as an object. Does not need to display on the dom. 
+    let answer = Number($('#firstNum').val()); + Number($('#secondNum').val());
+    console.log(answer);
+    let solution = {
+        firstNumber: Number($('#firstNum').val()),
+        operation: "+",
+        secondNumber: Number($('#secondNum').val()),
+        equals: "=",
+        result: answer,
+    }
+    console.log(solution);
 }
 
 function minusNums() {
@@ -37,26 +43,22 @@ function clearSolutions() {
     console.log('in clearSolutions function!');
 }
 
-// let newQuote = {
-//     text: 'big gulps, eh? welp, seeya later',
-//     author: 'lloyd christmas',
-// }
+// Post solution function below. This goes to 
 
-// function postQuotes() {
-//     // create a POST request and log out the response
-//     // keep an eye out for situations where a refresh posts but a click won't!
+function postSolution() {
+    console.log('in postSolution function!');
 //     $.ajax({
 //         method: 'POST',
-//         url: '/quotes',
-//         data: newQuote
+//         data: math,
+//         url: '/solution',
 //     }).then(function(response){
 //         console.log('post request response', response);
 //         // get the updated array
-//         getQuotes();
+//         addNums();
 //     }).catch(function(error){
 //         alert(error.responseText);
 //     });
-// }
+}
 
 // function getQuotes() {
 //     $.ajax({
