@@ -58,17 +58,63 @@ function subtraction() {
 
 function minusNums() {
     console.log('in minusNums function!');
+    let answer = Number($('#firstNum').val()) - Number($('#secondNum').val());
+    let newSolution = {
+        firstNumber: Number($('#firstNum').val()),
+        operation: "-",
+        secondNumber: Number($('#secondNum').val()),
+        equals: "=",
+        result: answer,
+    }
+    console.log(newSolution);
+
+    $('#currentSolution').empty();
+    $('#currentSolution').append(answer);
+    $.ajax({
+        method: 'POST',
+        url: '/solutions',
+        data: newSolution,
+    }).then(function(response){
+        console.log('post request response', response);
+        newSolution.empty;
+        getCalculations();
+    }).catch(function(error){
+        alert(error.responseText);
+    });
 }
 
 ////////////////////////////
 
-function mupliplication() {
+function multiplication() {
     console.log('in multiplication function');
     $('#equalsBtn').on('click', multiplyNums);
 }
 
 function multiplyNums() {
     console.log('in multiplyNums function!');
+    let answer = Number($('#firstNum').val()) * Number($('#secondNum').val());
+    let newSolution = {
+        firstNumber: Number($('#firstNum').val()),
+        operation: "*",
+        secondNumber: Number($('#secondNum').val()),
+        equals: "=",
+        result: answer,
+    }
+    console.log(newSolution);
+
+    $('#currentSolution').empty();
+    $('#currentSolution').append(answer);
+    $.ajax({
+        method: 'POST',
+        url: '/solutions',
+        data: newSolution,
+    }).then(function(response){
+        console.log('post request response', response);
+        newSolution.empty;
+        getCalculations();
+    }).catch(function(error){
+        alert(error.responseText);
+    });
 }
 
 ////////////////////////////
@@ -80,6 +126,29 @@ function division() {
 
 function divideNums() {
     console.log('in divideNums function!');
+    let answer = Number($('#firstNum').val()) / Number($('#secondNum').val());
+    let newSolution = {
+        firstNumber: Number($('#firstNum').val()),
+        operation: "/",
+        secondNumber: Number($('#secondNum').val()),
+        equals: "=",
+        result: answer,
+    }
+    console.log(newSolution);
+
+    $('#currentSolution').empty();
+    $('#currentSolution').append(answer);
+    $.ajax({
+        method: 'POST',
+        url: '/solutions',
+        data: newSolution,
+    }).then(function(response){
+        console.log('post request response', response);
+        newSolution.empty;
+        getCalculations();
+    }).catch(function(error){
+        alert(error.responseText);
+    });
 }
 
 ///////////////////////////
